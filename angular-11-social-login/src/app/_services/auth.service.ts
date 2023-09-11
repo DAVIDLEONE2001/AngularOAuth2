@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(credentials): Observable<any> {
-    return this.http.post(AppConstants.AUTH_API + 'signin', {
+    return this.http.post(AppConstants.AUTH_API + 'login', {
       email: credentials.username,
       password: credentials.password
     }, httpOptions);
@@ -22,7 +22,7 @@ export class AuthService {
 
   register(user): Observable<any> {
     return this.http.post(AppConstants.AUTH_API + 'signup', {
-      displayName: user.displayName,
+      name: user.displayName,
       email: user.email,
       password: user.password,
       matchingPassword: user.matchingPassword,

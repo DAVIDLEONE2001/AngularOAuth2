@@ -118,6 +118,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Angular11SocialLogin"
+    }
+  },
+  "defaultProject": "Angular11SocialLogin",
+  "cli": {
+    "analytics": "1b35b764-2c3e-4683-b9a4-dadf864ce810"
+  }
 }

@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {UserService} from "./user.service";
 
 const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
+const USER_KEY = 'user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
 
-  constructor() { }
+  constructor(private userService: UserService) {
+  }
 
   signOut(): void {
     window.sessionStorage.clear();
@@ -26,9 +28,17 @@ export class TokenStorageService {
   public saveUser(user): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+
   }
 
   public getUser(): any {
-    return JSON.parse(sessionStorage.getItem(USER_KEY));
+    console.log(sessionStorage);
+    this.userService.getCurrentUser().subscribe(
+      data => {
+        console.log(data);
+        return data;
+      }
+    );
+
   }
 }
